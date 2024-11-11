@@ -11,6 +11,9 @@ import SwiftUI
 
 public struct ScalePageView<ValueType: Identifiable, PageContent: View>: UIViewControllerRepresentable, TransformPageViewProtocol {
 
+    // MARK: Public
+    
+    
     // MARK: Properties
 
     public var builder: Builder
@@ -21,7 +24,7 @@ public struct ScalePageView<ValueType: Identifiable, PageContent: View>: UIViewC
     public init(
         _ data: [ValueType],
         selection: Binding<ValueType.ID?>? = nil,
-        @ViewBuilder viewBuilder: @escaping (ValueType) -> PageContent
+        @ViewBuilder viewBuilder: @escaping (ValueType, PagingController?) -> PageContent
     ) {
         builder = .init(data: data, pageViewBuilder: viewBuilder, selection: selection)
         builder.modifierData.scaleOptions = .init()
@@ -33,5 +36,9 @@ public extension ScalePageView {
     func options(_ options: ScaleTransformViewOptions) -> Self {
         builder.modifierData.scaleOptions = options
         return self
+    }
+    
+    func update(_ row: Int) {
+        builder.viewController?.update(row)
     }
 }

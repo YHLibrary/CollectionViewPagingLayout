@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -613,7 +613,6 @@
 			buildConfigurationList = AB500A4323B104E60056BE37 /* Build configuration list for PBXNativeTarget "PagingLayoutSamples" */;
 			buildPhases = (
 				6C5C2953E0649518FCAADAB2 /* [CP] Check Pods Manifest.lock */,
-				296700332442116600A1F508 /* SwiftLint */,
 				AB500A2B23B104E20056BE37 /* Sources */,
 				AB500A2C23B104E20056BE37 /* Frameworks */,
 				AB500A2D23B104E20056BE37 /* Resources */,
@@ -721,24 +720,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PagingLayoutSamples/Pods-PagingLayoutSamples-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		296700332442116600A1F508 /* SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = SwiftLint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}\"/SwiftLint/swiftlint autocorrect --config \"${SRCROOT}/../.swiftlint_autocorrect.yml\";\n\"${PODS_ROOT}\"/SwiftLint/swiftlint --config \"${SRCROOT}/../.swiftlint.yml\";\n";
 		};
 		6C5C2953E0649518FCAADAB2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -874,7 +855,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 4J5W7CJ2ZV;
+				DEVELOPMENT_TEAM = 5Z9U9UL8D8;
 				INFOPLIST_FILE = AppKitGlue/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -900,7 +881,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 4J5W7CJ2ZV;
+				DEVELOPMENT_TEAM = 5Z9U9UL8D8;
 				INFOPLIST_FILE = AppKitGlue/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1050,7 +1031,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "PagingLayoutSamples/Paging Layout.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4J5W7CJ2ZV;
+				DEVELOPMENT_TEAM = 5Z9U9UL8D8;
 				INFOPLIST_FILE = PagingLayoutSamples/Info.plist;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1076,7 +1057,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "PagingLayoutSamples/Paging Layout.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4J5W7CJ2ZV;
+				DEVELOPMENT_TEAM = 5Z9U9UL8D8;
 				INFOPLIST_FILE = PagingLayoutSamples/Info.plist;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (

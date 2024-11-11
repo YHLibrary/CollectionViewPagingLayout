@@ -15,7 +15,7 @@ public class PagingCollectionViewControllerBuilder<ValueType: Identifiable, Page
     // MARK: Properties
 
     let data: [ValueType]
-    let pageViewBuilder: (ValueType, CGFloat) -> PageContent
+    let pageViewBuilder: (ValueType, CGFloat, PagingController?) -> PageContent
     let selection: Binding<ValueType.ID?>?
 
     var modifierData: PagingCollectionViewModifierData = .init()
@@ -27,7 +27,7 @@ public class PagingCollectionViewControllerBuilder<ValueType: Identifiable, Page
 
     public init(
         data: [ValueType],
-        pageViewBuilder: @escaping (ValueType, CGFloat) -> PageContent,
+        pageViewBuilder: @escaping (ValueType, CGFloat, PagingController?) -> PageContent,
         selection: Binding<ValueType.ID?>?
     ) {
         self.data = data
@@ -37,11 +37,11 @@ public class PagingCollectionViewControllerBuilder<ValueType: Identifiable, Page
 
     public init(
         data: [ValueType],
-        pageViewBuilder: @escaping (ValueType) -> PageContent,
+        pageViewBuilder: @escaping (ValueType, PagingController?) -> PageContent,
         selection: Binding<ValueType.ID?>?
     ) {
         self.data = data
-        self.pageViewBuilder = { value, _ in pageViewBuilder(value) }
+        self.pageViewBuilder = { value, _, controller in pageViewBuilder(value, controller) }
         self.selection = selection
     }
 
@@ -50,7 +50,9 @@ public class PagingCollectionViewControllerBuilder<ValueType: Identifiable, Page
     
     func make() -> ViewController {
         let viewController = ViewController()
-        viewController.pageViewBuilder = pageViewBuilder
+        viewController.pageViewBuilder = { [weak viewController] value, progress -> PageContent in
+            self.pageViewBuilder(value, progress, viewController)
+        }
         viewController.modifierData = modifierData
         viewController.update(list: data, currentIndex: nil)
         setupOnCurrentPageChanged(viewController)

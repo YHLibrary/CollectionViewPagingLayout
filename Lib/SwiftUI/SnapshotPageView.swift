@@ -21,7 +21,7 @@ public struct SnapshotPageView<ValueType: Identifiable, PageContent: View>: UIVi
     public init(
         _ data: [ValueType],
         selection: Binding<ValueType.ID?>? = nil,
-        @ViewBuilder viewBuilder: @escaping (ValueType) -> PageContent
+        @ViewBuilder viewBuilder: @escaping (ValueType, PagingController?) -> PageContent
     ) {
         builder = .init(data: data, pageViewBuilder: viewBuilder, selection: selection)
         builder.modifierData.snapshotOptions = .init()

@@ -20,7 +20,7 @@ public struct TransformPageView<ValueType: Identifiable, PageContent: View>: UIV
     public init(
         _ data: [ValueType],
         selection: Binding<ValueType.ID?>? = nil,
-        @ViewBuilder viewBuilder: @escaping (ValueType, CGFloat) -> PageContent
+        @ViewBuilder viewBuilder: @escaping (ValueType, CGFloat, PagingController?) -> PageContent
     ) {
         builder = .init(data: data, pageViewBuilder: viewBuilder, selection: selection)
     }

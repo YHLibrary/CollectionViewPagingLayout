@@ -9,11 +9,16 @@
 import UIKit
 import SwiftUI
 
+public protocol PagingController {
+    func update(_ currentIndex: Int)
+}
+
 public class PagingCollectionViewController<ValueType: Identifiable, PageContent: View>: UIViewController,
     UICollectionViewDataSource,
     CollectionViewPagingLayoutDelegate,
     UICollectionViewDelegate,
-    UIScrollViewDelegate {
+    UIScrollViewDelegate,
+    PagingController {
 
     // MARK: Properties
 
@@ -42,8 +47,9 @@ public class PagingCollectionViewController<ValueType: Identifiable, PageContent
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: PagingCollectionViewCell<ValueType, PageContent> = collectionView.dequeueReusableCellClass(for: indexPath)
+        let cell: PagingCollectionViewCell<ValueType, PageContent> = collectionView.dequeueReusableCellClass(for: indexPath, reuseIdentifier: "cell")
         cell.update(value: list[indexPath.row], index: indexPath, parent: self)
+        print("indexPath: \(indexPath.row)")
         return cell
     }
 
@@ -51,7 +57,17 @@ public class PagingCollectionViewController<ValueType: Identifiable, PageContent
         onCurrentPageChanged?(currentPage)
     }
 
-
+    public func update(_ currentIndex: Int) {
+        guard currentIndex < self.list.count else {
+            return
+        }
+        let indexPath = IndexPath(row: currentIndex, section: 0)
+        if let cell = collectionView.cellForItem(at: indexPath) as? PagingCollectionViewCell<ValueType, PageContent> {
+            cell.update(value: list[indexPath.row], index: indexPath, parent: self)
+        }
+        
+    }
+    
     // MARK: Internal functions
 
     func update(list: [ValueType], currentIndex: Int?) {
@@ -100,7 +116,7 @@ public class PagingCollectionViewController<ValueType: Identifiable, PageContent
         )
         layout.delegate = self
         collectionView.backgroundColor = .clear
-        collectionView.registerClass(PagingCollectionViewCell<ValueType, PageContent>.self)
+        collectionView.registerClass(PagingCollectionViewCell<ValueType, PageContent>.self, reuseIdentifier: "cell")
         collectionView.dataSource = self
         view.fill(with: collectionView)
         layout.numberOfVisibleItems = modifierData?.numberOfVisibleItems

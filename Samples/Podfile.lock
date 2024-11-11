@@ -1,33 +1,21 @@
 PODS:
   - CollectionViewPagingLayout (1.1.0)
   - Splash (0.13.0)
-  - SwiftLint (0.47.0)
 
 DEPENDENCIES:
   - CollectionViewPagingLayout (from `./../`)
-  - Splash (from `https://github.com/amirdew/Splash.git`)
-  - SwiftLint
-
-SPEC REPOS:
-  trunk:
-    - SwiftLint
+  - Splash (from `./../../Splash`)
 
 EXTERNAL SOURCES:
   CollectionViewPagingLayout:
     :path: "./../"
   Splash:
-    :git: https://github.com/amirdew/Splash.git
-
-CHECKOUT OPTIONS:
-  Splash:
-    :commit: 919ad99dfdc16b82665c44c3b6494f4e5f22bcec
-    :git: https://github.com/amirdew/Splash.git
+    :path: "./../../Splash"
 
 SPEC CHECKSUMS:
   CollectionViewPagingLayout: 2f8d50683bae57ca88f47fa4ab0195c9079582cf
-  Splash: 5ec9a07c4bbf047ddd659bfc11d35331d31004f7
-  SwiftLint: d41cc46a2ae58ac6d9f26954bc89f1d72e71fdef
+  Splash: 4834d2a4a2f054bd237ce9b356dfea3045c4b121
 
-PODFILE CHECKSUM: a829b1accd80b68e4033b32927c85146318f7597
+PODFILE CHECKSUM: 849583e7f237bee693d0b8a250e9143c3f0ad773
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.15.2

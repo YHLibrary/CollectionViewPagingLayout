@@ -3,6 +3,17 @@ platform :ios, '14.0'
 target 'PagingLayoutSamples' do
   use_frameworks!
   pod 'CollectionViewPagingLayout', :path => './../'
-  pod 'Splash', :git => 'https://github.com/amirdew/Splash.git'
-  pod 'SwiftLint'
+  # pod 'Splash', :git => 'https://github.com/amirdew/Splash.git'
+  pod 'Splash', :path => './../../Splash'
+#  pod 'SwiftLint', :path => './../../SwiftLint'
+end
+
+post_install do |installer|
+    installer.generated_projects.each do |project|
+          project.targets.each do |target|
+              target.build_configurations.each do |config|
+                  config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+               end
+          end
+   end
 end

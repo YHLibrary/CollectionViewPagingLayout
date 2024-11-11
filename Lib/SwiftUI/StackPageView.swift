@@ -21,7 +21,7 @@ public struct StackPageView<ValueType: Identifiable, PageContent: View>: UIViewC
     public init(
         _ data: [ValueType],
         selection: Binding<ValueType.ID?>? = nil,
-        @ViewBuilder viewBuilder: @escaping (ValueType) -> PageContent
+        @ViewBuilder viewBuilder: @escaping (ValueType, PagingController?) -> PageContent
     ) {
         builder = .init(data: data, pageViewBuilder: viewBuilder, selection: selection)
         builder.modifierData.stackOptions = .init()
